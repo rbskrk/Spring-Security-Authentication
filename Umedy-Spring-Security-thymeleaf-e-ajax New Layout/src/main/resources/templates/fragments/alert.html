@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<body>
+
+	<div th:fragment="alerta-erro">
+		<div th:if="${alerta != null}"
+			th:class="${alerta == 'erro'} ? 'alert alert-danger' : 'alert alert-success'"
+			role="alert">
+			<h4 th:text="${titulo}">Credenciais...</h4>
+			<p th:text="${texto}">Login ou senha incorretos...</p>
+			<hr>
+			<p class="mb-0">
+				<small th:text="${subtexto}">Acesso permitido...</small>
+			</p>
+		</div>
+	</div>
+
+	<div th:fragment="alerta-sucesso">
+
+		<div class="alert alert-custom alert-warning fade show mb-5"
+			role="alert" th:if="${falha != null}">
+			
+			<div class="alert-text" th:text="${falha}"></div>
+			<div class="alert-close">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true"> <i class="ki ki-close"></i>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="alert alert-custom alert-success fade show mb-5"
+			role="alert" th:if="${sucesso != null}">
+			<div class="alert-text" th:text="${sucesso}"></div>
+			<div class="alert-close">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true"> <i class="ki ki-close"></i>
+					</span>
+				</button>
+			</div>
+		</div>
+
+	</div>
+
+</body>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+
+</head>
+<body>
+
+	<section layout:fragment="corpo">
+
+		<!--begin::Content-->
+		<div class="content d-flex flex-column flex-column-fluid"
+			id="kt_content">
+			<!--begin::Subheader-->
+			<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+				<div
+					class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+					<!--begin::Info-->
+					<div class="d-flex align-items-center flex-wrap mr-1">
+						<!--begin::Page Heading-->
+						<div class="d-flex align-items-baseline flex-wrap mr-5">
+							<!--begin::Page Title-->
+							<h5 class="text-dark font-weight-bold my-1 mr-5">Adicionar
+								Unidade</h5>
+							<!--end::Page Title-->
+							<!--begin::Breadcrumb-->
+							<ul
+								class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+								<li class="breadcrumb-item"><a th:href="@{/home}"
+									class="text-muted">Home</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">Aplicações
+								</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">
+										Unidades</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">Adicionar
+										Unidade</a></li>
+							</ul>
+							<!--end::Breadcrumb-->
+						</div>
+						<!--end::Page Heading-->
+					</div>
+					<!--end::Info-->
+				</div>
+			</div>
+			<!--begin::Entry-->
+			<div class="d-flex flex-column-fluid">
+				<!--begin::Container-->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div th:replace="fragments/alert :: alerta-sucesso"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--begin::Entry-->
+			<div class="d-flex flex-column-fluid">
+				<!--begin::Container-->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<!--begin::Card-->
+							<div class="card card-custom gutter-b example example-compact">
+								<div class="card-header">
+									<h3 class="card-title">Formulário de Cadastro</h3>
+								</div>
+
+								<!--begin::Form-->
+								<form th:action="@{/unidade/salvar}" th:object="${unidade}"
+									method="POST" id="cadastroUnidade" name="cadastroUnidade"
+									class="was-validated">
+									<div class="card-body">
+
+										<div class="form-group row">
+											<div class="col-lg-6">
+												<label>Unidade *</label>
+												<div>
+													<input type="text" class="form-control" name="nome"
+														placeholder="Nome da unidade" th:field="*{nome}" required />
+													<div class="invalid-feedback">Nome da unidade é
+														requerido.</div>
+												</div>
+											</div>
+											<div class="col-lg-2">
+												<label>Centro *</label>
+												<div>
+													<div class="input-group">
+														<select class="form-control" name="centro"
+															th:field="*{centro.numero}" required>
+															<option value="">Selecione...</option>
+															<option th:each="c : ${centros}" th:value="${c.numero}"
+																th:text="${c.numero}">6040</option>
+														</select>
+														<div class="invalid-feedback">Centro da unidade é
+															requerido.</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<label>CNPJ</label>
+												<div>
+													<input class="form-control" id="inputmask_cnpj" type="text"
+														name="cnpj" th:field="*{cnpj}" required />
+													<div class="invalid-feedback">CNPJ é requerido.</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-lg-6">
+												<label>Rua *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="rua"
+															id="rua" placeholder="Rua"
+															th:field="*{endereco.logradouro}" required />
+														<div class="invalid-feedback">Rua é requerido.</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-2">
+												<label>Número *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="numero"
+															placeholder="Número" th:field="*{endereco.numero}"
+															required />
+														<div class="invalid-feedback">Número é requerido.</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-lg-4">
+												<label>Complemento *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="complemento"
+															placeholder="Complemento"
+															th:field="*{endereco.complemento}" />
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-lg-4">
+												<label>Bairro *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="bairro"
+															id="bairro" placeholder="Bairro"
+															th:field="*{endereco.bairro}" required />
+														<div class="invalid-feedback">Bairro é requerido.</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<label>Cidade *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="cidade"
+															placeholder="Cidade" th:field="*{endereco.cidade}"
+															required />
+														<div class="invalid-feedback">Cidade é requerido.</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-lg-4">
+												<label>Estado *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="estado"
+															placeholder="Estado" th:field="*{endereco.estado}"
+															required />
+														<div class="invalid-feedback">Estado é requerido.</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-4">
+												<label>UF *</label>
+												<div>
+													<select id="uf" name="uf" class="form-control"
+														th:field="*{endereco.uf}" required
+														th:classappend="${#fields.hasErrors('endereco.uf')} ? 'is-invalid'">
+														<option value="">Selecione...</option>
+														<option th:each="uf : ${ufs}" th:value="${uf}"
+															th:text="${uf.sigla}"></option>
+														<div class="invalid-feedback">Selecione uma opção.</div>
+													</select>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="form-group">
+													<label>Cep</label> <input type="text" class="form-control"
+														id="inputmask_cep" th:field="*{endereco.cep}" required />
+													<div class="invalid-feedback">Cep é requerido.</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<div class="col-sm-4">
+
+												<label>Registro EP *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="regEp"
+															placeholder="Reg. EP" th:field="*{regEp}" required />
+														<div class="invalid-feedback">Registro de EP é
+															requerido.</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-sm-4">
+												<label>Registro Laboratório *</label>
+												<div>
+													<div class="input-group">
+														<input type="text" class="form-control" name="regLab"
+															placeholder="Reg. Laboratório" th:field="*{regLab}"
+															required />
+														<div class="invalid-feedback">Registro do
+															laboratório é requerido.</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<input type="hidden" name="id" th:field="*{id}">
+									</div>
+
+									<div class="card-footer">
+										<div class="row">
+											<div class="col-lg-9 ml-lg-auto">
+												<button type="submit"
+													class="btn btn-primary font-weight-bold mr-2"
+													name="submitButton" title="Salvar Unidade"
+													data-toggle="tooltip" data-placement="left">Salvar</button>
+												<button type="reset"
+													class="btn btn-light-primary font-weight-bold"
+													title="Cancelar" data-toggle="tooltip"
+													data-placement="right">Cancelar</button>
+											</div>
+										</div>
+									</div>
+
+								</form>
+								<!--end::Form-->
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--end::Container-->
+		</div>
+
+
+	</section>
+
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
+
+	<script>
+		$(function() {
+
+			// validation needs name of the element
+			$('#food').multiselect();
+
+			// initialize after multiselect
+			$('#basic-form').parsley();
+		});
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Teste ::: Login</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+<!-- Favicon-->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet"
+	th:href="@{/assets/plugins/bootstrap/css/bootstrap.min.css}">
+
+<!-- Custom Css -->
+<link rel="stylesheet" th:href="@{/assets/css/amaze.style.min.css}">
+</head>
+
+<!-- Fonte -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<script src="https://kit.fontawesome.com/73237c316c.js"
+	crossorigin="anonymous"></script>
+
+<body class="font-ubuntu">
+
+	<div id="body" class="theme-cyan">
+
+		<div class="authentication">
+			<div class="container">
+				<div class="row clearfix">
+					<div class="col-lg-6 col-md-12">
+						<div class="company_detail">
+							<h4 class="logo">
+								<img class="mr-2" th:src="@{/assets/images/mosaicFertB.png}"
+									alt="Logo" style="width: 100px"> Teste
+							</h4>
+							<h3>
+								O <strong>teste</strong>
+							</h3>
+							<p>A melhor maneira para administrar seu laboratório</p>
+							<div class="footer">
+								<ul class="social_link list-unstyled">
+									<li><a href="#" title="LinkedIn"><i
+											class="zmdi zmdi-linkedin"></i></a></li>
+									<li><a href="#" title="Facebook"><i
+											class="zmdi zmdi-facebook"></i></a></li>
+									<li><a href="#" title="Twitter"><i
+											class="zmdi zmdi-twitter"></i></a></li>
+								</ul>
+								<hr>
+								<p class="copyright font-12">Copyright 2021 © Todos direitos
+									reservados. Rbs.com</p>
+							</div>
+
+							<div class="company_detail">
+								<div class="body">
+									<div th:replace="fragments/alert :: alerta-erro">
+										<div>Alerta de Erro</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12">
+						<div class="card-plain ml-auto">
+							<div class="header">
+								<h5>Iniciar sessão</h5>
+							</div>
+
+							<form class="form mt-5" method="post" th:action="@{/login}">
+								<div class="form-group mb-1">
+									<div class="input-group">
+										<input type="text" id="inputEmail" class="form-control"
+											placeholder="Email / Username" name="username" required
+											autofocus>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<input type="password" id="inputPassword" class="form-control"
+											placeholder="Password" name="password" required>
+									</div>
+									<a href="#" class="link font-13 float-right">Esqueceu a
+										senha? </a>
+								</div>
+								<div class="mt-4">
+									<label class="c_checkbox"> <input type="checkbox"
+										id="remember-me" name="remember-me" /> <span
+										class="checkmark"></span> <span class="ml-2">Mantenha-me
+											logado</span>
+									</label>
+								</div>
+
+								<div class="footer mt-3">
+									<button class="btn btn-secondary btn-block" type="submit">Entrar</button>
+								</div>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Jquery Core Js -->
+	<script th:src="@{/assets/bundles/libscripts.bundle.js}"></script>
+	<script th:src="@{/assets/bundles/vendorscripts.bundle.js}"></script>
+	<!-- Lib Scripts Plugin Js -->
+</body>
+</html>
+<!--  
+
+	<nav class="nav nav-pills flex-column flex-sm-row">
+		<a class="flex-sm-fill text-sm-left nav-link text-decoration-none"
+			th:href="@{/u/novo/cadastro}"><i
+			class="far fa-arrow-alt-circle-right"></i>&nbsp;Novo cadastro</a> <a
+			class="flex-sm-fill text-sm-left nav-link text-decoration-none"
+			th:href="@{/u/p/redefinir/senha}"><i class="fas fa-key"></i>&nbsp;Recuperar
+			senha</a> <a
+			class="flex-sm-fill text-sm-left nav-link text-decoration-none"
+			th:href="@{/}"><i class="fas fa-home"></i>&nbsp;Home</a>
+	</nav>
+
+-->
+

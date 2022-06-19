@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section layout:fragment="corpo">
+
+		<!--begin::Content-->
+		<div class="content d-flex flex-column flex-column-fluid"
+			id="kt_content">
+			<!--begin::Subheader-->
+			<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+				<div
+					class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+					<!--begin::Info-->
+					<div class="d-flex align-items-center flex-wrap mr-1">
+						<!--begin::Page Heading-->
+						<div class="d-flex align-items-baseline flex-wrap mr-5">
+							<!--begin::Page Title-->
+							<h5 class="text-dark font-weight-bold my-1 mr-5">Adicionar
+								Dados Pessoais</h5>
+							<!--end::Page Title-->
+							<!--begin::Breadcrumb-->
+							<ul
+								class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+								<li class="breadcrumb-item"><a th:href="@{/home}"
+									class="text-muted">Home</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">Aplicações
+								</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">
+										Usuário</a></li>
+								<li class="breadcrumb-item"><a href="" class="text-muted">Adicionar
+										dados pessoais</a></li>
+							</ul>
+							<!--end::Breadcrumb-->
+						</div>
+						<!--end::Page Heading-->
+					</div>
+					<!--end::Info-->
+				</div>
+			</div>
+			<!--begin::Entry-->
+			<div class="d-flex flex-column-fluid">
+				<!--begin::Container-->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div th:replace="fragments/alert :: alerta-sucesso"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--begin::Entry-->
+			<div class="d-flex flex-column-fluid">
+				<!--begin::Container-->
+				<div class="container">
+					<!--begin::Card-->
+					<div class="row">
+						<div class="col-lg-12">
+							<!--begin::Card-->
+							<div class="card card-custom example example-compact">
+								<div class="card-header">
+									<h3 class="card-title">Formulário de cadastro</h3>
+								</div>
+								<!--begin::Form-->
+								<form class="form" id="cadastroUsuarioDadosPessoais"
+									method="POST" th:action="@{/profileUsuario/salvar}"
+									th:object="${profileUsuario}">
+									<div class="card-body">
+
+										<div class="form-group row">
+											<div class="col-lg-6">
+												<label>Nome *</label>
+												<div>
+													<input type="text" class="form-control" name="nome"
+														id="nome" placeholder="Nome" th:field="*{nome}" required />
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<label>Sobrenome *</label>
+												<div>
+													<input type="text" class="form-control" name="sobrenome"
+														placeholder="Nome" th:field="*{sobrenome}" required />
+												</div>
+											</div>
+										</div>
+<!--  kt_select2_3
+	param	-->								
+										
+										<div class="form-group row">
+											<label class="col-lg-12">Centros *</label>
+											<div class="col-lg-6">
+												<select class="form-control" th:field="*{centros}"
+													id="centros" name="centros" multiple required>
+													<option value="1">6040</option>
+													<option value="2">6260</option>
+												</select> <input type="hidden" value="0" name="centros" />
+											</div>
+										</div>
+										<input type="hidden" name="uid" th:field="*{usuario.id}">
+										<input type="hidden" name="id" th:field="*{id}"> <br>
+									</div>
+									<div class="card-footer">
+										<div class="row">
+											<div class="col-lg-9 ml-lg-auto">
+												<button type="submit"
+													class="btn btn-primary font-weight-bold mr-2"
+													name="submitButton" title="Salvar"
+													data-toggle="tooltip" data-placement="left">Salvar</button>
+												<button type="reset"
+													class="btn btn-light-primary font-weight-bold"
+													title="Cancelar" data-toggle="tooltip"
+													data-placement="right">Cancelar</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!--end::Form-->
+							</div>
+							<!--end::Card-->
+						</div>
+					</div>
+				</div>
+				<!--end::Container-->
+			</div>
+			<!--end::Entry-->
+		</div>
+	</section>
+
+	<script>
+    $(function() {
+    
+   
+        // validation needs name of the element
+        $('#food').multiselect();
+
+        // initialize after multiselect
+        $('#basic-form').parsley();
+    });
+    </script>
+
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript">
+	$('#centros').ready(function(){
+			var centros = [[${profileUsuario.centros}]];
+			$.each(centros, function(k, v) {
+				$('#centros option[value="'+ v.id +'"]').attr('selected', 'selected');
+			})
+		});
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

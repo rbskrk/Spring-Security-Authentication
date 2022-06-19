@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<body>
+
+		<!-- Modal-->
+		<div  th:fragment="modal-confirm" class="modal fade" id="confirm-modal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<i aria-hidden="true" class="ki ki-close"></i>
+						</button>
+					</div>
+					<div class="modal-body">Você tem certeza que deseja excluir
+					esse ítem?</div>
+					<div class="modal-footer">
+						<button type="button"
+							class="btn btn-light-primary font-weight-bold"
+							data-dismiss="modal" id="btnCancel">Cancelar</button>
+						<button id="btnOk" type="button" class="btn btn-danger font-weight-bold">Excluir</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
